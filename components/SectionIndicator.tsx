@@ -1,0 +1,3 @@
+'use client';import {useEffect,useState} from 'react';
+const names=['Welcome','Experience','Care','Technology','Your visit','Community','Questions','Visit us'];
+export function SectionIndicator(){const[active,setActive]=useState(0);useEffect(()=>{const nodes=names.map((_,i)=>document.getElementById(`home-${i}`)).filter(Boolean) as HTMLElement[];const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)setActive(Number(e.target.id.split('-')[1]))}),{rootMargin:'-38% 0px -45% 0px'});nodes.forEach(n=>io.observe(n));return()=>io.disconnect()},[]);return <aside className="section-indicator" aria-label="Page sections">{names.map((n,i)=><a key={n} className={active===i?'active':''} href={`#home-${i}`} aria-label={n} title={n}><span/></a>)}</aside>}

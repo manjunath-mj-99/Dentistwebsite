@@ -1,0 +1,2 @@
+'use client';import {useState} from 'react';import {ChevronDown} from './Icons';
+export function FAQAccordion({items}:{items:readonly {q:string;a:string}[]}){const[active,setActive]=useState<number|null>(0);return <div className="faq-list">{items.map((item,i)=><div className={`faq-item ${active===i?'is-open':''}`} key={item.q}><button aria-expanded={active===i} onClick={()=>setActive(active===i?null:i)}><span>{item.q}</span><ChevronDown size={18}/></button>{active===i&&<p>{item.a}</p>}</div>)}</div>}

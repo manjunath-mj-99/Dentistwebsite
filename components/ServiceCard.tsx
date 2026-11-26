@@ -1,0 +1,3 @@
+import Link from 'next/link';import {Activity,ArrowUpRight,Heart,ScanLine,Smile,Sparkles,Sun,Tooth} from './Icons';
+const icons:any={tooth:Activity,smile:Smile,sparkles:Sparkles,scan:ScanLine,sun:Sun,heart:Heart};
+export function ServiceCard({service,index=0}:{service:any;index?:number}){const Icon=icons[service.icon]||Activity;return <Link className={`service-card service-card-${index%6}`} href={`/services/${service.slug}`}><div className="service-icon"><Icon size={21} strokeWidth={1.7}/></div><span className="card-index">0{index+1}</span><h3>{service.title}</h3><p>{service.description}</p><span className="learn-link">Explore care <ArrowUpRight size={16}/></span></Link>}
